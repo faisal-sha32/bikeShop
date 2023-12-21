@@ -51,11 +51,10 @@ class _HomeState extends State<Home> {
             showAlertDialog(
                 context: context,
                 onConfirm: () {
-                  AuthService().signOut();
-
-                  Fluttertoast.showToast(msg: "Logging out please wait..");
-
                   Navigator.pop(context);
+                  AuthService().signOut(context: context).then((_) {
+                    Fluttertoast.showToast(msg: "Logging out please wait..");
+                  });
                 },
                 dialogMessage: "Are you sure to logout ?");
           },
