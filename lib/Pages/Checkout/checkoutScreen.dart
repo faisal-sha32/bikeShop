@@ -26,10 +26,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     if (mounted) {
       setState(() {
         userEmail = email;
-        userName = email!.split("@")[0];
+        userName = user.displayName.toString();
       });
     }
-
   }
 
   @override

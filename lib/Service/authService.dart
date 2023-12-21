@@ -30,9 +30,10 @@ class AuthService {
   }
 
   Future<void> signUp({
-    BuildContext? context,
-    String? email,
-    String? password,
+    required BuildContext? context,
+    required String? email,
+    required String? password,
+    required String? userName,
   }) async {
     try {
       UserCredential userCredential =
@@ -42,6 +43,9 @@ class AuthService {
       );
       var authCredential = userCredential.user;
       debugPrint(authCredential!.uid);
+
+      await authCredential.updateDisplayName(userName);
+
       if (authCredential.uid.isNotEmpty) {
         // ignore: use_build_context_synchronously
         Navigator.push(
