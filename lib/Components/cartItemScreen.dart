@@ -63,10 +63,6 @@ class CartItemScreen extends StatelessWidget {
                         showAlertDialog(
                           context: context,
                           onConfirm: () {
-                            // FirebaseServiceManager().setCartNumber(
-                            //     collectionName: collectionName,
-                            //     context: context);
-
                             FirebaseServiceManager().removeItemFromCart(
                                 collectionName: collectionName,
                                 documentId: documentSnapshot.id,
