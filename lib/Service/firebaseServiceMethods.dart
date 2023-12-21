@@ -7,7 +7,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class FirebaseServiceManager {
-  Future<void> addToCart({var product, BuildContext? context}) async {
+  Future<void> addToCart({
+    var product,
+    BuildContext? context,
+  }) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     var currentUser = auth.currentUser;
     CollectionReference collectionRef =
@@ -21,7 +24,10 @@ class FirebaseServiceManager {
     });
   }
 
-  Future setCartNumber({String? collectionName, BuildContext? context}) async {
+  Future setCartNumber({
+    String? collectionName,
+    BuildContext? context,
+  }) async {
     CollectionReference collection =
         FirebaseFirestore.instance.collection(collectionName!);
 
@@ -30,30 +36,50 @@ class FirebaseServiceManager {
         .collection("items")
         .get();
 
+    // ignore: use_build_context_synchronously
     Provider.of<CartProvider>(context!, listen: false)
         .setCartNumber(querySnapshot.docs.length.toInt());
   }
 
-  Future<void> removeItemFromCart(
-      {String? collectionName,
-      String? documentId,
-      BuildContext? context}) async {
+  Future<void> removeItemFromCart({
+    String? collectionName,
+    String? documentId,
+    BuildContext? context,
+  }) async {
     FirebaseFirestore.instance
-        .collection(collectionName!)
-        .doc(FirebaseAuth.instance.currentUser!.email)
-        .collection("items")
-        .doc(documentId)
+        .collection(
+          collectionName!,
+        )
+        .doc(
+          FirebaseAuth.instance.currentUser!.email,
+        )
+        .collection(
+          "items",
+        )
+        .doc(
+          documentId,
+        )
         .delete()
-        .then((value) {});
+        .then((_) {});
   }
 
-  Future<void> clearCart(String collectionPath, String documentId,
-      String subcollectionPath, BuildContext? context) async {
+  Future<void> clearCart(
+    String collectionPath,
+    String documentId,
+    String subcollectionPath,
+    BuildContext? context,
+  ) async {
     // Get a reference to the subcollection
     CollectionReference subcollectionReference = FirebaseFirestore.instance
-        .collection(collectionPath)
-        .doc(documentId)
-        .collection(subcollectionPath);
+        .collection(
+          collectionPath,
+        )
+        .doc(
+          documentId,
+        )
+        .collection(
+          subcollectionPath,
+        );
 
     // Get all documents in the subcollection
     QuerySnapshot querySnapshot = await subcollectionReference.get();

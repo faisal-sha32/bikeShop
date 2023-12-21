@@ -1,3 +1,4 @@
+import 'package:bikeshop/Constants/appColors.dart';
 import 'package:bikeshop/Pages/BottomNavBar/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                 child: const Icon(
                   Icons.check,
                   size: 35,
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
               ),
             ),
@@ -51,7 +52,10 @@ class _SuccessScreenState extends State<SuccessScreen> {
             ),
             const Text(
               "Payment done",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
             )
           ],
         ),

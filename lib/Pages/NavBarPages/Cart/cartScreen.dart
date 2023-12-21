@@ -35,13 +35,20 @@ class _CartState extends State<Cart> {
                 textColor: AppColors.white,
                 color: AppColors.kPrimaryColor,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return CheckoutScreen(
-                      stream: stream,
-                    );
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return CheckoutScreen(
+                          stream: stream,
+                        );
+                      },
+                    ),
+                  );
                 },
-                child: const Text("Proceed To Checkout"),
+                child: const Text(
+                  "Proceed To Checkout",
+                ),
               ),
             ),
       body: (context.watch<CartProvider>().cartItems <= 0)
@@ -56,8 +63,9 @@ class _CartState extends State<Cart> {
             )
           : SafeArea(
               child: CartItemScreen(
-                  collectionName: "users-cart-items", stream: stream),
-              //  fetchData("users-cart-items", context),
+                collectionName: "users-cart-items",
+                stream: stream,
+              ),
             ),
     );
   }

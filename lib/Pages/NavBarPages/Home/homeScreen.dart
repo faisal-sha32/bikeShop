@@ -36,8 +36,10 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     fetchProducts();
-    FirebaseServiceManager()
-        .setCartNumber(collectionName: "users-cart-items", context: context);
+    FirebaseServiceManager().setCartNumber(
+      collectionName: "users-cart-items",
+      context: context,
+    );
     super.initState();
   }
 
@@ -49,14 +51,19 @@ class _HomeState extends State<Home> {
         child: IconButton(
           onPressed: () {
             showAlertDialog(
-                context: context,
-                onConfirm: () {
-                  Navigator.pop(context);
-                  AuthService().signOut(context: context).then((_) {
-                    Fluttertoast.showToast(msg: "Logging out please wait..");
-                  });
-                },
-                dialogMessage: "Are you sure to logout ?");
+              context: context,
+              onConfirm: () {
+                Navigator.pop(
+                  context,
+                );
+                AuthService().signOut(context: context).then((_) {
+                  Fluttertoast.showToast(
+                    msg: "Logging out please wait..",
+                  );
+                });
+              },
+              dialogMessage: "Are you sure to logout ?",
+            );
           },
           icon: const Icon(Icons.logout),
         ),

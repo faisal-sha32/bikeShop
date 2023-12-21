@@ -22,7 +22,9 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: CircleAvatar(
             backgroundColor: AppColors.kPrimaryColor,
             child: IconButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.pop(
+                      context,
+                    ),
                 icon: const Icon(
                   Icons.arrow_back,
                   color: AppColors.white,
@@ -76,10 +78,15 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: ElevatedButton(
                 onPressed: () {
                   FirebaseServiceManager()
-                      .addToCart(product: widget.product, context: context)
+                      .addToCart(
+                    product: widget.product,
+                    context: context,
+                  )
                       .then((value) {
                     FirebaseServiceManager().setCartNumber(
-                        collectionName: "users-cart-items", context: context);
+                      collectionName: "users-cart-items",
+                      context: context,
+                    );
                   });
                 },
                 style: ElevatedButton.styleFrom(

@@ -65,7 +65,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         Text(
                           "Welcome Buddy!",
                           style: TextStyle(
-                              fontSize: 22.sp, color: AppColors.kPrimaryColor),
+                            fontSize: 22.sp,
+                            color: AppColors.kPrimaryColor,
+                          ),
                         ),
                         Text(
                           "Let's create your account",
@@ -198,7 +200,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             child: Text(
                               "Continue",
                               style: TextStyle(
-                                  color: AppColors.white, fontSize: 18.sp),
+                                color: AppColors.white,
+                                fontSize: 18.sp,
+                              ),
                             ),
                           ),
                         ),

@@ -30,7 +30,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       });
     }
 
-    // here you write the codes to input the data into firestore
   }
 
   @override

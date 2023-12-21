@@ -9,7 +9,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> signOut({required BuildContext? context}) async {
+  Future<void> signOut({
+    required BuildContext? context,
+  }) async {
     try {
       await _auth.signOut();
 
@@ -27,8 +29,11 @@ class AuthService {
     }
   }
 
-  Future<void> signUp(
-      {BuildContext? context, String? email, String? password}) async {
+  Future<void> signUp({
+    BuildContext? context,
+    String? email,
+    String? password,
+  }) async {
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -63,8 +68,11 @@ class AuthService {
     } catch (_) {}
   }
 
-  Future<void> signIn(
-      {BuildContext? context, String? email, String? password}) async {
+  Future<void> signIn({
+    BuildContext? context,
+    String? email,
+    String? password,
+  }) async {
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(

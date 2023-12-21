@@ -7,7 +7,9 @@ class CartProvider extends ChangeNotifier {
 
   int get cartItems => _cartItems;
 
-  setCartNumber(int value) {
+  setCartNumber(
+    int value,
+  ) {
     _cartItems = value;
     notifyListeners();
   }

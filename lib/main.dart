@@ -12,16 +12,18 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: (context) => CartProvider(),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        ),
+      ],
+      child: MyApp(
+        key: UniqueKey(),
       ),
-    ],
-    child: MyApp(
-      key: UniqueKey(),
     ),
-  ));
+  );
 }
 
 class MyApp extends StatelessWidget {
