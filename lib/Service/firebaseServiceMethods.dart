@@ -13,9 +13,18 @@ class FirebaseServiceManager {
   }) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     var currentUser = auth.currentUser;
-    CollectionReference collectionRef =
-        FirebaseFirestore.instance.collection("users-cart-items");
-    return collectionRef.doc(currentUser!.email).collection("items").doc().set({
+    CollectionReference collectionRef = FirebaseFirestore.instance.collection(
+      "users-cart-items",
+    );
+    return collectionRef
+        .doc(
+          currentUser!.email,
+        )
+        .collection(
+          "items",
+        )
+        .doc()
+        .set({
       "name": product["product-name"],
       "price": product["product-price"],
       "images": product["product-img"],
@@ -28,17 +37,23 @@ class FirebaseServiceManager {
     String? collectionName,
     BuildContext? context,
   }) async {
-    CollectionReference collection =
-        FirebaseFirestore.instance.collection(collectionName!);
+    CollectionReference collection = FirebaseFirestore.instance.collection(
+      collectionName!,
+    );
 
     QuerySnapshot querySnapshot = await collection
-        .doc(FirebaseAuth.instance.currentUser!.email)
-        .collection("items")
+        .doc(
+          FirebaseAuth.instance.currentUser!.email,
+        )
+        .collection(
+          "items",
+        )
         .get();
 
     // ignore: use_build_context_synchronously
-    Provider.of<CartProvider>(context!, listen: false)
-        .setCartNumber(querySnapshot.docs.length.toInt());
+    Provider.of<CartProvider>(context!, listen: false).setCartNumber(
+      querySnapshot.docs.length.toInt(),
+    );
   }
 
   Future<void> removeItemFromCart({
