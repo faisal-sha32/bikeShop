@@ -2,7 +2,7 @@
 
 import 'package:bikeshop/Constants/appColors.dart';
 import 'package:bikeshop/Pages/NavBarPages/Cart/cartScreen.dart';
-import 'package:bikeshop/providers/cartProvider.dart';
+import 'package:bikeshop/Providers/cartProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

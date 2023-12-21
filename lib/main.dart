@@ -1,6 +1,6 @@
 import 'package:bikeshop/Pages/Auth/authScreen.dart';
 import 'package:bikeshop/firebase_options.dart';
-import 'package:bikeshop/providers/cartProvider.dart';
+import 'package:bikeshop/Providers/cartProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
