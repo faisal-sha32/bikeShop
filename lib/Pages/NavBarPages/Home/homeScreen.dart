@@ -1,5 +1,6 @@
 import 'package:bikeshop/Components/alertDialog.dart';
 import 'package:bikeshop/Constants/appColors.dart';
+import 'package:bikeshop/Models/productModel.dart';
 import 'package:bikeshop/Pages/ProductDetails/productDetailScreen.dart';
 import 'package:bikeshop/Service/authService.dart';
 import 'package:bikeshop/Service/firebaseServiceMethods.dart';
@@ -14,19 +15,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List _products = [];
+  final List<ProductModel?> _products = [];
+  // final List _products = [];
   final _firestoreInstance = FirebaseFirestore.instance;
 
   fetchProducts() async {
     QuerySnapshot qn = await _firestoreInstance.collection("products").get();
     setState(() {
       for (int i = 0; i < qn.docs.length; i++) {
-        _products.add({
-          "product-name": qn.docs[i]["product-name"],
-          "product-description": qn.docs[i]["product-description"],
-          "product-price": qn.docs[i]["product-price"],
-          "product-img": qn.docs[i]["product-img"],
-        });
+        _products.add(
+          ProductModel(
+            productDescription: qn.docs[i]["product-description"],
+            productImage: qn.docs[i]["product-img"],
+            productName: qn.docs[i]["product-name"],
+            productPrice: qn.docs[i]["product-price"],
+          ),
+        );
+
+        // _products.add({
+        //   "product-name": qn.docs[i]["product-name"],
+        //   "product-description": qn.docs[i]["product-description"],
+        //   "product-price": qn.docs[i]["product-price"],
+        //   "product-img": qn.docs[i]["product-img"],
+        // });
       }
     });
 
@@ -107,7 +118,7 @@ class _HomeState extends State<Home> {
                             child: Container(
                               color: AppColors.black,
                               child: Image.network(
-                                _products[index]["product-img"],
+                                _products[index]!.productImage!,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -116,13 +127,13 @@ class _HomeState extends State<Home> {
                             height: 10.h,
                           ),
                           Text(
-                            "${_products[index]["product-name"]}",
+                            "${_products[index]!.productName}",
                           ),
                           SizedBox(
                             height: 20.h,
                           ),
                           Text(
-                            "\u{20B9}${_products[index]["product-price"]}",
+                            "\u{20B9}${_products[index]!.productPrice}",
                           ),
                         ],
                       ),

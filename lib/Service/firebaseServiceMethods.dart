@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:bikeshop/Models/productModel.dart';
 import 'package:bikeshop/providers/cartProvider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 
 class FirebaseServiceManager {
   Future<void> addToCart({
-    var product,
+    ProductModel? product,
     BuildContext? context,
   }) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -25,9 +26,9 @@ class FirebaseServiceManager {
         )
         .doc()
         .set({
-      "name": product["product-name"],
-      "price": product["product-price"],
-      "images": product["product-img"],
+      "name": product!.productName,
+      "price": product.productPrice,
+      "images": product.productImage
     }).then((value) {
       Fluttertoast.showToast(msg: "Item added to cart");
     });

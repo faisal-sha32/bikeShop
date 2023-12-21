@@ -1,10 +1,11 @@
 import 'package:bikeshop/Constants/appColors.dart';
+import 'package:bikeshop/Models/productModel.dart';
 import 'package:bikeshop/Service/firebaseServiceMethods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetails extends StatefulWidget {
-  final dynamic product;
+  final ProductModel? product;
   const ProductDetails({super.key, this.product});
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -48,23 +49,23 @@ class _ProductDetailsState extends State<ProductDetails> {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(
-                        widget.product['product-img'],
+                        widget.product!.productImage!,
                       ),
                       fit: BoxFit.cover)),
             ),
             Text(
-              widget.product['product-name'],
+              widget.product!.productName!,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
               ),
             ),
-            Text(widget.product['product-description']),
+            Text(widget.product!.productDescription!),
             SizedBox(
               height: 15.h,
             ),
             Text(
-              "\u{20B9} ${widget.product['product-price'].toString()}",
+              "\u{20B9} ${widget.product!.productPrice.toString()}",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
