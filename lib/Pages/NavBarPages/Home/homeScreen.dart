@@ -31,13 +31,6 @@ class _HomeState extends State<Home> {
             productPrice: qn.docs[i]["product-price"],
           ),
         );
-
-        // _products.add({
-        //   "product-name": qn.docs[i]["product-name"],
-        //   "product-description": qn.docs[i]["product-description"],
-        //   "product-price": qn.docs[i]["product-price"],
-        //   "product-img": qn.docs[i]["product-img"],
-        // });
       }
     });
 
